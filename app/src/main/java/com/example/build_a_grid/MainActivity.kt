@@ -37,8 +37,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             BuildaGridTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    BlockGrid_2(
+                        blocks = Datasource().loadBlocks(),
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
