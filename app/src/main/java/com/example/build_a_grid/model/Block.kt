@@ -6,4 +6,5 @@ import androidx.annotation.StringRes
 data class Block(
     @DrawableRes val imageResourceId: Int,
     @StringRes val stringResourceId: Int,
+    val availableCourses: Int
 )
