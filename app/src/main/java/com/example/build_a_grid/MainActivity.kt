@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.material3.Card
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -23,6 +25,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.build_a_grid.R
+import com.example.build_a_grid.data.Datasource
 import com.example.build_a_grid.model.Block
 import com.example.build_a_grid.ui.theme.BuildaGridTheme
 
@@ -84,6 +87,24 @@ fun BlockCard(block: Block, modifier: Modifier = Modifier) {
                 }
             }
         }
+    }
+}
+
+@Composable
+fun BlockGrid_2(blocks: List<Block>,modifier: Modifier = Modifier) {
+    LazyVerticalGrid(columns = GridCells.Fixed(2)){
+        items(blocks.size){block ->
+            BlockCard(block = blocks[block], modifier = Modifier.padding(8.dp))
+        }
+    }
+
+}
+
+@Preview(showBackground = true)
+@Composable
+fun BlockGrid_2Preview() {
+    BuildaGridTheme {
+        BlockGrid_2(blocks = Datasource().loadBlocks())
     }
 }
 
