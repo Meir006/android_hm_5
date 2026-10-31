@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -52,10 +53,10 @@ class MainActivity : ComponentActivity() {
 fun HeroBlock(hero: Hero, modifier: Modifier){
     Card(modifier = modifier,
         elevation = CardDefaults.cardElevation(2.dp)){
-        Row(modifier = Modifier.padding(16.dp).height(72.dp)){
-            Column(){
+        Row(modifier = Modifier.padding(16.dp).fillMaxWidth()){
+            Column(modifier = Modifier.weight(1f)){
                 Text(text = stringResource(hero.nameRes),
-                    style = MaterialTheme.typography.displayLarge)
+                    style = MaterialTheme.typography.displaySmall)
 
                 Text(text = stringResource(hero.descriptionRes),
                     style = MaterialTheme.typography.bodyLarge)
@@ -74,7 +75,7 @@ fun HeroBlock(hero: Hero, modifier: Modifier){
 
 @Composable
 fun HerosColumn(heroes: List<Hero>,modifier: Modifier = Modifier){
-    LazyColumn(){
+    LazyColumn(modifier = modifier){
         items(heroes.size){hero ->
             HeroBlock(hero = heroes[hero], modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp))
         }
